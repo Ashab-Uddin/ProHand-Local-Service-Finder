@@ -1,0 +1,1122 @@
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f3f4f6;
+    color: #1f2937;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #2563eb;
+    color: white;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #1d4ed8;
+}
+
+.btn-lg {
+    padding: 0.75rem 2.5rem;
+    font-size: 1.125rem;
+}
+
+header {
+    background-color: white;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 2rem;
+    min-height: 80px; 
+    
+}
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+    text-decoration: none;
+    color: #1f2937;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.nav-icon {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+}
+
+.nav-link:hover {
+    color: #2563eb;
+}
+
+/* Ensure navbar stays professional size */
+nav {
+    padding: 1.25rem 2rem;
+    min-height: 80px; 
+}
+
+.logo-link {
+    text-decoration: none;
+    /* Removes any default link styling */
+    display: flex;
+    /* Helps with vertical alignment */
+    align-items: center;
+}
+
+.Logo {
+    /* Your existing professional sizing */
+    height: 60px;
+    width: auto;
+    padding: 15px 0px;
+
+    /* Effects */
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+
+/* Optional: Make it slightly smaller on mobile devices */
+
+
+.nav-links {
+    display: none;
+}
+
+.nav-links a {
+    margin: 0 1rem;
+    text-decoration: none;
+    color: #1f2937;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+
+.nav-icon {
+    width: 1rem;
+    height: 1rem;
+}
+
+.login-btn {
+    background-color: #2563eb;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.mobile-menu-btn {
+    display: block;
+}
+
+.hero-slider {
+    position: relative;
+    margin: 1.25rem;
+    background-color: #f3f4f6;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.slide-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 1.5rem;
+}
+
+.slide-content h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    animation: fadeIn 1s;
+}
+
+.slide-content p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    max-width: 42rem;
+    opacity: 0.9;
+    animation: fadeIn 1s;
+}
+
+.slide-content .btn {
+    transform: scale(1);
+    transition: transform 0.3s;
+}
+
+.slide-content .btn:hover {
+    transform: scale(1.05);
+}
+
+.slider-controls button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.slider-controls button:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Section Styling */
+.why-choose-prohand {
+    text-align: center;
+    padding: 4rem 2rem;
+    background-color: #ffffff;
+}
+
+.why-choose-prohand h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.why-choose-prohand p {
+    font-size: 1.125rem;
+    color: #6b7280;
+    margin-bottom: 2rem;
+}
+
+/* Service Card New CSS Code Start----------->>> */
+
+/* Service Card New CSS Code Start----------->>> */
+
+/* 1. Main Layout & Section Spacing */
+.latest-section {
+    padding: 60px 0;
+    background-color: #f8f9fa;
+}
+
+.latest-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* 2. The Card Container (Flexbox) */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+/* 3. The Service Card Base */
+.service-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    /* --- INCREASE WIDTH HERE --- */
+    width: 420px; 
+    /* --------------------------- */
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    text-align: left; /* Ensures all text stays left-aligned */
+}
+
+.service-card:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* 4. Zoom-in Image Effect ----------->>> */
+.image-wrapper {
+    position: relative;
+    height: 220px;
+    overflow: hidden; /* Crucial: crops the image as it scales */
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease; /* Smooth zoom transition */
+}
+
+/* This triggers the zoom when the CARD is hovered */
+.service-card:hover .image-wrapper img {
+    transform: scale(1.15); /* Adjust zoom level here */
+}
+
+/* 5. Badge (Remains on top and does NOT zoom) */
+.badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #1a73e8;
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    z-index: 2; /* Keeps badge above the zooming image */
+}
+
+/* 6. Card Content */
+.card-content {
+    padding: 24px;
+}
+
+.card-content h3 {
+    font-size: 1.15rem;
+    color: #1a2b49;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.card-content p {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 12px;
+}
+
+/* 7. Ratings */
+.rating {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.stars {
+    color: #ffc107;
+    letter-spacing: 1px;
+}
+
+.review-count {
+    font-size: 0.85rem;
+    color: #999;
+}
+
+/* 8. Price Styling */
+.price-section {
+    margin-bottom: 20px;
+}
+
+.price {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #1a73e8;
+    line-height: 1;
+}
+
+.unit {
+    font-size: 0.8rem;
+    color: #999;
+    font-weight: 500;
+}
+
+/* 9. Full Width Button */
+.view-btn {
+    width: 100%;
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 12px 0;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-size: 0.95rem;
+}
+
+.view-btn:hover {
+    background-color: #1557b0;
+}
+
+
+
+.btn-lg {
+    padding: 12px 40px;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+}
+/* Container for controls---------------- */
+.hero-slider {
+    position: relative;
+    /* Essential for absolute positioning of buttons */
+    overflow: hidden;
+}
+
+.slider-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2px;
+    z-index: 10;
+    pointer-events: none;
+
+}
+
+/* Individual Button Styling */
+.slider-controls button {
+    pointer-events: auto;
+    /* Enable clicks back for buttons */
+    background: rgba(255, 255, 255, 0.3);
+    /* Glass effect */
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: none;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Hover Effect */
+.slider-controls button:hover {
+    background: #007bff;
+    /* Primary Blue */
+    color: white;
+    transform: scale(1.1);
+}
+
+/* Dot Navigation Styling */
+.dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.dot.active {
+    background: white;
+    width: 30px;
+    /* Long pill effect for active dot */
+    border-radius: 10px;
+}
+
+/*end slider controler*/
+.prev-btn {
+    left: 1rem;
+}
+
+.next-btn {
+    right: 1rem;
+}
+
+.dots {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 10;
+}
+
+.dot {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: white;
+    width: 2rem;
+}
+
+.latest-section {
+    padding: 0 0.5rem;
+}
+
+.latest-title {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.latest-title h2 {
+    font-size: 2.25rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.latest-title p {
+    font-size: 1.125rem;
+    color: #6b7280;
+    max-width: 42rem;
+    margin: 0 auto;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.service-card {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+    justify-content: space-between;
+}
+
+.service-card:hover {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.card-image {
+    position: relative;
+    height: 18rem;
+    overflow: hidden;
+    background-color: #e5e7eb;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.card-image:hover img {
+    transform: scale(1.1);
+}
+
+.card-category {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background-color: #2563eb;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.card-content {
+    padding: 1.25rem;
+}
+
+.card-title {
+    font-size: 1.125rem;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card-desc {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-bottom: 0.75rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.stars {
+    display: flex;
+    gap: 0.125rem;
+}
+
+.star {
+    width: 1rem;
+    height: 1rem;
+    fill: #fbbf24;
+    color: #fbbf24;
+}
+
+.star.empty {
+    fill: none;
+    color: #d1d5db;
+}
+
+.rating-text {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-left: 0.5rem;
+}
+
+.card-price {
+    font-size: 1.125rem;
+    font-weight: bold;
+    color: #2563eb;
+}
+/* --- Optimized Why Choose Section --- */
+.why-choose-prohand {
+    text-align: center;
+    padding: 4rem 1rem; /* Reduced padding for better mobile fit */
+    background-color: #ffffff;
+}
+
+.why-choose-prohand h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #1f2937;
+}
+
+.why-choose-prohand p {
+    font-size: 1.125rem;
+    color: #6b7280;
+    margin-bottom: 3rem;
+}
+
+/* Changed from Grid to Flex to enable perfect centering of all items */
+.service-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* This centers the cards on the last row */
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-card {
+    background-color: #f9fafb;
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px; /* Fixed width ensures they wrap and center properly */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.service-card .icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f3f4f6;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    transition: all 0.3s ease;
+}
+
+.service-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 0.75rem;
+}
+
+.service-card p {
+    color: #6b7280;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 0; /* Override global p margin */
+}
+
+/* Hover States */
+.service-card:hover .icon {
+    background-color: #2563eb;
+    color: white;
+}
+
+.service-card:hover h3 {
+    color: #2563eb;
+}
+
+ .view-all {
+    text-align: center;
+    margin: 4rem 0;
+}
+
+.testimonial-section {
+    padding: 5rem 0;
+}
+
+.testimonial-title {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.testimonial-title h2 {
+    font-size: 1.875rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.testimonial-title p {
+    font-size: 1.125rem;
+    color: #6b7280;
+    max-width: 42rem;
+    margin: 0 auto;
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.testimonial-card {
+    background-color: #f9fafb;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s;
+}
+
+.testimonial-card:hover {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.testimonial-stars {
+    display: flex;
+    gap: 0.25rem;
+    margin-bottom: 1rem;
+}
+
+.testimonial-text {
+    color: #374151;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.testimonial-user {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.testimonial-avatar {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+}
+
+.testimonial-name {
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.testimonial-service {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.work-section {
+    padding: 5rem 0;
+}
+
+.work-title {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.work-title h2 {
+    font-size: 1.875rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.work-title p {
+    font-size: 1.125rem;
+    color: #6b7280;
+    max-width: 42rem;
+    margin: 0 auto;
+}
+
+.work-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.work-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.work-item:hover {
+    transform: scale(1.05);
+}
+
+.work-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.work-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    color: white;
+    padding: 1rem;
+}
+
+.work-overlay h3 {
+    font-size: 1.125rem;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+}
+
+.work-overlay p {
+    font-size: 0.875rem;
+}
+
+/* Call-to-Action Section */
+.cta-section {
+    background-color: #1E40AF;
+    /* Blue background */
+    color: white;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.cta-container h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.cta-container p {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+}
+
+.cta-btn {
+    background-color: white;
+    color: #3677f1;
+    /* Blue text */
+    padding: 12px 24px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.cta-btn:hover {
+    background-color: #60a5fa;
+    /* Lighter blue on hover */
+    color: white;
+}
+
+footer {
+    background-color: #111827;
+    /* Dark Gray */
+    color: #d1d5db;
+    /* Light Gray */
+    padding: 3rem 0;
+}
+
+.footer-container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-brand h3 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.footer-brand p {
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.footer-section h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    color: #d1d5db;
+    /* Light Gray */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #60a5fa;
+    /* Blue */
+}
+
+.footer-contact div {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.footer-contact a {
+    color: #d1d5db;
+    /* Light Gray */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-contact a:hover {
+    color: #60a5fa;
+    /* Blue */
+}
+
+.footer-divider {
+    border-color: #374151;
+    /* Dark Gray */
+    margin-bottom: 1.5rem;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer-bottom p {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    /* Light Gray */
+}
+
+.footer-social {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-social a {
+    color: #d1d5db;
+    /* Light Gray */
+    transition: color 0.3s;
+}
+
+.footer-social a:hover {
+    color: #60a5fa;
+    /* Blue */
+}
+
+.hidden {
+    display: none;
+}
+
+/* Footer Contact Links */
+.footer-contact a {
+    color: #ffffff;
+    /* White */
+    font-weight: 600;
+}
+
+.footer-contact p {
+    color: #ffffff;
+    /* White */
+    font-weight: 600;
+}
+
+.footer-social a {
+    color: #ffffff;
+    margin: 0 10px;
+}
+
+.footer-social a:hover {
+    color: #f59e0b;
+    /* Amber */
+}
+
+/* Footer Icons */
+.footer-contact svg {
+    width: 20px;
+    /* Adjust size of the icons */
+    height: 20px;
+    /* Ensure height matches width */
+    fill: #d1d5db;
+    /* Light gray color for icons */
+}
+
+.footer-contact a {
+    color: #d1d5db;
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 5px;
+    /* Small space between the icon and text */
+    transition: color 0.3s;
+}
+
+.footer-contact a:hover {
+    color: #60a5fa;
+    /* Hover effect */
+}
+
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media (min-width: 768px) {
+    .nav-links {
+        display: flex;
+    }
+
+    .service-card {
+        padding: 1rem;
+    }
+
+    .service-cards {
+        gap: 1rem;
+    }
+
+    .mobile-menu-btn {
+        display: none;
+    }
+
+    .hero-slider {
+        margin: 2.5rem;
+        height: 600px;
+    }
+
+    .slide-content h2 {
+        font-size: 3rem;
+    }
+
+    .slide-content p {
+        font-size: 1.25rem;
+    }
+
+    .latest-section {
+        padding: 0 2.5rem;
+    }
+
+    .latest-title h2 {
+        font-size: 2.5rem;
+    }
+
+    .Logo {
+        height: 45px;
+    }
+
+
+}
