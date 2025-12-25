@@ -45,13 +45,15 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 1.25rem 2rem;
-    min-height: 80px; 
-    
+    min-height: 80px;
+
 }
+
 .nav-link {
     display: flex;
     align-items: center;
-    gap: 8px; /* Space between icon and text */
+    gap: 8px;
+    /* Space between icon and text */
     text-decoration: none;
     color: #1f2937;
     font-weight: 600;
@@ -71,7 +73,7 @@ nav {
 /* Ensure navbar stays professional size */
 nav {
     padding: 1.25rem 2rem;
-    min-height: 80px; 
+    min-height: 80px;
 }
 
 .logo-link {
@@ -214,7 +216,8 @@ nav {
     background-color: rgba(255, 255, 255, 0.5);
 }
 
-/* Section Styling */
+/* Duplicate .why-choose-prohand commented out */
+/* 
 .why-choose-prohand {
     text-align: center;
     padding: 4rem 2rem;
@@ -231,7 +234,9 @@ nav {
     font-size: 1.125rem;
     color: #6b7280;
     margin-bottom: 2rem;
-}
+} */
+
+
 
 /* Service Card New CSS Code Start----------->>> */
 
@@ -262,7 +267,7 @@ nav {
     background-color: #ffffff;
     border-radius: 12px;
     /* --- INCREASE WIDTH HERE --- */
-    width: 420px; 
+    width: 420px;
     /* --------------------------- */
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
@@ -270,7 +275,8 @@ nav {
     border: 1px solid #f0f0f0;
     display: flex;
     flex-direction: column;
-    text-align: left; /* Ensures all text stays left-aligned */
+    text-align: left;
+    /* Ensures all text stays left-aligned */
 }
 
 .service-card:hover {
@@ -281,19 +287,22 @@ nav {
 .image-wrapper {
     position: relative;
     height: 220px;
-    overflow: hidden; /* Crucial: crops the image as it scales */
+    overflow: hidden;
+    /* Crucial: crops the image as it scales */
 }
 
 .image-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease; /* Smooth zoom transition */
+    transition: transform 0.5s ease;
+    /* Smooth zoom transition */
 }
 
 /* This triggers the zoom when the CARD is hovered */
 .service-card:hover .image-wrapper img {
-    transform: scale(1.15); /* Adjust zoom level here */
+    transform: scale(1.15);
+    /* Adjust zoom level here */
 }
 
 /* 5. Badge (Remains on top and does NOT zoom) */
@@ -307,7 +316,8 @@ nav {
     border-radius: 20px;
     font-size: 0.75rem;
     font-weight: 600;
-    z-index: 2; /* Keeps badge above the zooming image */
+    z-index: 2;
+    /* Keeps badge above the zooming image */
 }
 
 /* 6. Card Content */
@@ -354,7 +364,7 @@ nav {
 .price {
     display: block;
     font-size: 1.6rem;
-    font-weight: 800;
+    font-weight: 600;
     color: #1a73e8;
     line-height: 1;
 }
@@ -385,17 +395,23 @@ nav {
 
 
 
+/* Duplicate .btn-lg commented out */
+/* 
 .btn-lg {
     padding: 12px 40px;
     font-size: 1.1rem;
     box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
-}
-/* Container for controls---------------- */
+} */
+
+
+/* Duplicate .hero-slider commented out */
+/* 
 .hero-slider {
     position: relative;
-    /* Essential for absolute positioning of buttons */
     overflow: hidden;
-}
+} */
+
+
 
 .slider-controls {
     position: absolute;
@@ -410,12 +426,11 @@ nav {
 
 }
 
-/* Individual Button Styling */
+/* Duplicate .slider-controls button commented out */
+
 .slider-controls button {
     pointer-events: auto;
-    /* Enable clicks back for buttons */
     background: rgba(255, 255, 255, 0.3);
-    /* Glass effect */
     backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.3);
     border: none;
@@ -430,13 +445,13 @@ nav {
     transition: all 0.3s ease;
 }
 
-/* Hover Effect */
 .slider-controls button:hover {
     background: #007bff;
-    /* Primary Blue */
     color: white;
     transform: scale(1.1);
 }
+
+
 
 /* Dot Navigation Styling */
 .dots {
@@ -473,6 +488,8 @@ nav {
     right: 1rem;
 }
 
+/* Duplicate .dots commented out */
+/*
 .dots {
     position: absolute;
     bottom: 1.5rem;
@@ -482,7 +499,11 @@ nav {
     gap: 0.5rem;
     z-index: 10;
 }
+*/
 
+
+/* Duplicate .dot commented out */
+/*
 .dot {
     width: 0.75rem;
     height: 0.75rem;
@@ -496,11 +517,19 @@ nav {
     background-color: white;
     width: 2rem;
 }
+*/
 
+
+/* Duplicate .latest-section commented out */
+/*
 .latest-section {
     padding: 0 0.5rem;
 }
+*/
 
+
+/* Duplicate .latest-title commented out */
+/*
 .latest-title {
     text-align: center;
     margin-bottom: 3rem;
@@ -518,45 +547,47 @@ nav {
     max-width: 42rem;
     margin: 0 auto;
 }
+*/
 
-.services-grid {
+
+/* .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
-}
+} */
 
-.service-card {
+/* .service-card {
     background-color: white;
     border-radius: 0.5rem;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: box-shadow 0.3s;
     justify-content: space-between;
-}
+} */
 
-.service-card:hover {
+/* .service-card:hover {
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-}
+} */
 
-.card-image {
+/* .card-image {
     position: relative;
     height: 18rem;
     overflow: hidden;
     background-color: #e5e7eb;
-}
+} */
 
-.card-image img {
+/* .card-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s;
-}
+} */
 
-.card-image:hover img {
+/* .card-image:hover img {
     transform: scale(1.1);
-}
+} */
 
-.card-category {
+/* .card-category {
     position: absolute;
     top: 0.75rem;
     right: 0.75rem;
@@ -570,9 +601,9 @@ nav {
 
 .card-content {
     padding: 1.25rem;
-}
+} */
 
-.card-title {
+/* .card-title {
     font-size: 1.125rem;
     font-weight: bold;
     color: #1f2937;
@@ -582,9 +613,9 @@ nav {
     line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-}
+} */
 
-.card-desc {
+/* .card-desc {
     font-size: 0.875rem;
     color: #6b7280;
     margin-bottom: 0.75rem;
@@ -593,13 +624,13 @@ nav {
     line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-}
+} */
 
-.rating {
+/* .rating {
     display: flex;
     align-items: center;
     margin-bottom: 0.75rem;
-}
+} */
 
 .stars {
     display: flex;
@@ -613,12 +644,12 @@ nav {
     color: #fbbf24;
 }
 
-.star.empty {
+/* .star.empty {
     fill: none;
     color: #d1d5db;
-}
+} */
 
-.rating-text {
+/* .rating-text {
     font-size: 0.875rem;
     color: #6b7280;
     margin-left: 0.5rem;
@@ -628,11 +659,12 @@ nav {
     font-size: 1.125rem;
     font-weight: bold;
     color: #2563eb;
-}
+} */
 /* --- Optimized Why Choose Section --- */
 .why-choose-prohand {
     text-align: center;
-    padding: 4rem 1rem; /* Reduced padding for better mobile fit */
+    padding: 4rem 1rem;
+    /* Reduced padding for better mobile fit */
     background-color: #ffffff;
 }
 
@@ -653,13 +685,15 @@ nav {
 .service-cards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* This centers the cards on the last row */
+    justify-content: center;
+    /* This centers the cards on the last row */
     gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.service-card {
+/* --- Why Choose Section Specifics --- */
+.why-choose-prohand .service-card {
     background-color: #f9fafb;
     padding: 2rem 1.5rem;
     border-radius: 12px;
@@ -668,16 +702,16 @@ nav {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 300px; /* Fixed width ensures they wrap and center properly */
+    width: 300px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.service-card:hover {
+.why-choose-prohand .service-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-.service-card .icon {
+.why-choose-prohand .service-card .icon {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
     display: flex;
@@ -690,31 +724,67 @@ nav {
     transition: all 0.3s ease;
 }
 
-.service-card h3 {
+.why-choose-prohand .service-card:hover .icon {
+    background-color: #2563eb;
+    color: white;
+}
+
+.why-choose-prohand .service-card h3 {
     font-size: 1.25rem;
     font-weight: 600;
     color: #1f2937;
     margin-bottom: 0.75rem;
 }
 
-.service-card p {
-    color: #6b7280;
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin-bottom: 0; /* Override global p margin */
-}
-
-/* Hover States */
-.service-card:hover .icon {
-    background-color: #2563eb;
-    color: white;
-}
-
-.service-card:hover h3 {
+.why-choose-prohand .service-card:hover h3 {
     color: #2563eb;
 }
 
- .view-all {
+.why-choose-prohand .service-card p {
+    color: #6b7280;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+
+/* --- Main Service Listings (Card Container) --- */
+
+.card-container .service-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    width: 380px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    /* FORCE LEFT ALIGNMENT */
+    align-items: stretch;
+    /* FORCE FULL WIDTH CONTENT */
+    padding: 0;
+    /* REMOVE PADDING FROM CONTAINER */
+}
+
+.card-container .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Ensure headings inside main service cards are NOT centered or colored by the other rule */
+.card-container .service-card h3 {
+    color: #111827;
+    margin-bottom: 8px;
+    /* Reset any hover color change from the other rule if it leaked */
+}
+
+.card-container .service-card:hover h3 {
+    color: #111827;
+}
+
+.view-all {
     text-align: center;
     margin: 4rem 0;
 }
