@@ -134,7 +134,7 @@ nav {
 
 .hero-slider {
     position: relative;
-    margin: 1.25rem;
+    margin: 1.75rem;
     background-color: #f3f4f6;
     height: 500px;
     overflow: hidden;
@@ -461,6 +461,7 @@ nav {
     transform: translateX(-50%);
     display: flex;
     gap: 12px;
+    z-index: 20;
 }
 
 .dot {

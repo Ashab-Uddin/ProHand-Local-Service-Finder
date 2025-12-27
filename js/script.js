@@ -18,7 +18,7 @@ const state = {
 function navigate() {
     const hash = window.location.hash.substring(1) || 'home';
     const pageId = CONFIG.VALID_PAGES.includes(hash) ? hash : 'home';
-    
+
     // Switch Visibility
     document.querySelectorAll('div[id]').forEach(div => {
         if (CONFIG.VALID_PAGES.includes(div.id)) {
@@ -27,13 +27,13 @@ function navigate() {
     });
 
     // Trigger Page-Specific Data Loading
-    switch(pageId) {
+    switch (pageId) {
         case 'myservices': loadMyServices(); break;
-        case 'mybooking':  loadBookings(); break;
-        case 'profile':    loadProfile(); break;
-        case 'home':       resetSlider(); break;
+        case 'mybooking': loadBookings(); break;
+        case 'profile': loadProfile(); break;
+        case 'home': resetSlider(); break;
     }
-    
+
     // Always refresh navbar on navigation
     updateNavbar();
 }
@@ -138,8 +138,8 @@ function loadMyServices() {
     const container = document.getElementById('my-services-list');
     if (!container) return;
     const myServices = JSON.parse(localStorage.getItem('myServices')) || [];
-    
-    container.innerHTML = myServices.length 
+
+    container.innerHTML = myServices.length
         ? myServices.map(s => createServiceCard(s, false)).join('')
         : `<p>You haven't added any services yet.</p>`;
 }
@@ -148,7 +148,7 @@ function loadMyServices() {
 function updateSliderUI() {
     const slides = document.querySelectorAll('.slide');
     const dots = document.querySelectorAll('.dot');
-    
+
     slides.forEach((s, i) => s.classList.toggle('active', i === state.currentSlide));
     dots.forEach((d, i) => d.classList.toggle('active', i === state.currentSlide));
 }
@@ -160,9 +160,44 @@ function nextSlide() {
     updateSliderUI();
 }
 
+function prevSlide() {
+    const slides = document.querySelectorAll('.slide');
+    if (slides.length === 0) return;
+    state.currentSlide = (state.currentSlide - 1 + slides.length) % slides.length;
+    updateSliderUI();
+}
+
+function goToSlide(index) {
+    state.currentSlide = index;
+    updateSliderUI();
+}
+
 function resetSlider() {
     state.currentSlide = 0;
     updateSliderUI();
 }
 
-setInterval(nextSlide, CONFIG.SLIDE_INTERVAL);
+// Auto-advance slider
+// Clear interval on manual interaction to prevent immediate jump
+let slideInterval = setInterval(nextSlide, CONFIG.SLIDE_INTERVAL);
+
+function resetInterval() {
+    clearInterval(slideInterval);
+    slideInterval = setInterval(nextSlide, CONFIG.SLIDE_INTERVAL);
+}
+
+// Expose functions globally for HTML onclick handlers
+window.prevSlide = function () {
+    prevSlide();
+    resetInterval();
+};
+
+window.nextSlide = function () {
+    nextSlide();
+    resetInterval();
+};
+
+window.goToSlide = function (index) {
+    goToSlide(index);
+    resetInterval();
+};
