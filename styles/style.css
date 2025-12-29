@@ -1188,6 +1188,195 @@ footer {
     .Logo {
         height: 45px;
     }
+}
+
+/* --- Zoom Animation Logic --- */
+@keyframes zoomInEntry {
+    0% {
+        opacity: 0;
+        transform: scale(0.9) translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.slide-in-section {
+    opacity: 1;
+    /* Reset to 1, as we control children now for better staging if needed, or keep 1 and control children */
+    transition: opacity 0.6s ease;
+}
+
+/* Hide children initially when JS is active (slide-in-section class present) */
+.slide-in-section .latest-title h2,
+.slide-in-section .latest-title p,
+.slide-in-section .card-container .service-card,
+.why-choose-prohand.slide-in-section h2,
+.why-choose-prohand.slide-in-section>p,
+.why-choose-prohand.slide-in-section .service-card,
+.slide-in-section .testimonial-title h2,
+.slide-in-section .testimonial-title p,
+.slide-in-section .testimonial-card {
+    opacity: 0;
+}
+
+.animate-zoom {
+    opacity: 1;
+}
+
+.animate-zoom .latest-title h2 {
+    animation: slideInLeft 0.8s ease-out forwards;
+}
+
+.animate-zoom .latest-title p {
+    animation: slideInRight 0.8s ease-out forwards;
+    animation-delay: 0.2s;
+}
+
+.animate-zoom .service-card {
+    opacity: 0;
+    animation: zoomInEntry 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-zoom .service-card:nth-child(1) {
+    animation-delay: 0.3s;
+}
+
+.animate-zoom .service-card:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.animate-zoom .service-card:nth-child(3) {
+    animation-delay: 0.5s;
+}
+
+.animate-zoom .service-card:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+.animate-zoom .service-card:nth-child(5) {
+    animation-delay: 0.7s;
+}
+
+.animate-zoom .service-card:nth-child(6) {
+    animation-delay: 0.8s;
+}
 
 
+/* --- New Animations --- */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.6);
+    }
+
+    70% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Why Choose Section Animation (Corrected Selectors) */
+.why-choose-prohand.animate-features h2,
+.why-choose-prohand.animate-features>p {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-features .service-card {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-features .service-card:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.animate-features .service-card:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.animate-features .service-card:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.animate-features .service-card:nth-child(4) {
+    animation-delay: 0.5s;
+}
+
+.animate-features .service-card:nth-child(5) {
+    animation-delay: 0.6s;
+}
+
+.animate-features .service-card:nth-child(6) {
+    animation-delay: 0.7s;
+}
+
+/* Testimonials Section Animation */
+.animate-testimonials .testimonial-title h2,
+.animate-testimonials .testimonial-title p {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-testimonials .testimonial-card {
+    animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.animate-testimonials .testimonial-card:nth-child(1) {
+    animation-delay: 0.3s;
+}
+
+.animate-testimonials .testimonial-card:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.animate-testimonials .testimonial-card:nth-child(3) {
+    animation-delay: 0.7s;
+}
+
+
+/* Final state class to prevent animation restart on display toggle - REMOVED for replay */
+.nav-link.active {
+    color: #2563eb;
 }

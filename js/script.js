@@ -43,6 +43,7 @@ window.addEventListener('DOMContentLoaded', () => {
     navigate();
     loadLatestServices(); // This fetches your top-rated service cards
     updateNavbar();
+    initScrollAnimations(); // Initialize scroll animations
 });
 
 // --- 3. UI COMPONENTS ---
@@ -92,17 +93,20 @@ function updateNavbar() {
         profile: `<svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>`
     };
 
+    const currentHash = window.location.hash || '#home';
+    const isActive = (hash) => currentHash === hash ? 'active' : '';
+
     let navHtml = `
-        <a href="#home" class="nav-link">${icons.home} Home</a>
-        <a href="#services" class="nav-link">${icons.services} Services</a>
+        <a href="#home" class="nav-link ${isActive('#home')}">${icons.home} Home</a>
+        <a href="#services" class="nav-link ${isActive('#services')}">${icons.services} Services</a>
     `;
 
     if (user) {
         navHtml += `
-            <a href="#myservices" class="nav-link">${icons.myservices} My Services</a>
-            <a href="#addservices" class="nav-link">${icons.add} Add Service</a>
-            <a href="#mybooking" class="nav-link">${icons.booking} My Bookings</a>
-            <a href="#profile" class="nav-link">${icons.profile} Profile</a>
+            <a href="#myservices" class="nav-link ${isActive('#myservices')}">${icons.myservices} My Services</a>
+            <a href="#addservices" class="nav-link ${isActive('#addservices')}">${icons.add} Add Service</a>
+            <a href="#mybooking" class="nav-link ${isActive('#mybooking')}">${icons.booking} My Bookings</a>
+            <a href="#profile" class="nav-link ${isActive('#profile')}">${icons.profile} Profile</a>
         `;
         authBtnContainer.innerHTML = `<button onclick="handleLogout()" class="login-btn" style="background-color: #ef4444;">Logout</button>`;
     } else {
@@ -201,3 +205,42 @@ window.goToSlide = function (index) {
     goToSlide(index);
     resetInterval();
 };
+
+// --- 7. ANIMATION LOGIC ---
+function initScrollAnimations() {
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    // Target multiple sections
+    const sections = [
+        { el: document.querySelector('.latest-section'), class: 'animate-zoom' },
+        { el: document.querySelector('.why-choose-prohand'), class: 'animate-features' },
+        { el: document.querySelector('.testimonial-section'), class: 'animate-testimonials' }
+    ];
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            // Find the config for this element to know which class to toggle
+            // We can match by element strictly
+            const config = sections.find(s => s.el === entry.target);
+            if (!config) return;
+
+            if (entry.isIntersecting) {
+                entry.target.classList.add(config.class);
+            } else {
+                // Reset animation when out of view (or hidden by tab switch)
+                entry.target.classList.remove(config.class);
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => {
+        if (section.el) {
+            section.el.classList.add('slide-in-section'); // Applies initial opacity: 0 to children via CSS
+            observer.observe(section.el);
+        }
+    });
+}
