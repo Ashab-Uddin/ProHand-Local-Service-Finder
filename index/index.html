@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/top_rated_animations.css">
+    <link rel="stylesheet" href="../styles/why_choose_animations.css">
+    <link rel="stylesheet" href="../styles/testimonial_animations.css">
+    <link rel="stylesheet" href="../styles/cta_animations.css">
+    <link rel="stylesheet" href="../styles/profile.css">
 </head>
 
 <body>
@@ -582,9 +587,38 @@
         <p>No bookings yet.</p>
     </div>
 
-    <div id="profile" class="container hidden">
-        <h2>Profile</h2>
-        <p>User profile information.</p>
+    <div id="profile" class="hidden">
+        <div class="profile-container">
+            <div class="profile-header-text">
+                <h2>My Profile</h2>
+                <p>Manage your profile information and settings</p>
+            </div>
+
+            <div class="profile-card">
+                <!-- Dark Banner -->
+                <div class="card-banner"></div>
+
+                <!-- Profile Image -->
+                <div class="profile-image-container">
+                    <div class="avatar-wrapper">
+                        <img id="profile-avatar" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Ashab"
+                            alt="Profile Picture">
+                    </div>
+                </div>
+
+                <!-- Info Section -->
+                <div class="profile-info">
+                    <h3 id="profile-name">User Name</h3>
+                    <div class="name-underline"></div>
+
+                    <p class="profile-detail">EMAIL: <span id="profile-email">user@example.com</span></p>
+                    <p class="last-login-text">LAST LOGIN: <span id="profile-last-login">Mon, 29 Dec 2025 18:15:03
+                            GMT</span></p>
+
+                    <button class="login-btn">Edit Profile</button>
+                </div>
+            </div>
+        </div>
     </div>
 
 
@@ -608,7 +642,8 @@
                         <li><a href="../index/services.html">Services</a></li>
                         <li><a href="#about">About</a></li>
                         <li><a href="#contact">Contact</a></li>
-                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="../index/provider_login.html">Provider Login</a></li>
+                        <li><a href="../index/admin_login.html">Admin Login</a></li>
                     </ul>
                 </div>
 

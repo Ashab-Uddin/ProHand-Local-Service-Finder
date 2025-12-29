@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../images//Favicon/favicon.png" type="image/x-icon">
+    <title>My Profile - ProHand</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/profile.css">
+</head>
+
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <a href="../index/index.html" class="logo-link">
+                    <img class="Logo" src="../images/Logo/ProHand Logo.png" alt="ProHand Logo">
+                </a>
+            </div>
+
+            <div class="nav-links" id="main-nav-links">
+                <a href="../index/index.html" class="nav-item">
+                    <i class="fas fa-house"></i>
+                    <span>Home</span>
+                </a>
+
+                <a href="../index/services.html" class="nav-item">
+                    <i class="fas fa-gears"></i>
+                    <span>Services</span>
+                </a>
+            </div>
+
+            <div class="nav-actions">
+                <div id="auth-btn">
+                    <a href="../index/login.html" class="login-btn">Login</a>
+                </div>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div id="profile">
+            <div class="profile-container">
+                <div class="profile-header-text">
+                    <h2>My Profile</h2>
+                    <p>Manage your profile information and settings</p>
+                </div>
+
+                <div class="profile-card">
+                    <!-- Dark Banner -->
+                    <div class="card-banner"></div>
+
+                    <!-- Profile Image -->
+                    <div class="profile-image-container">
+                        <div class="avatar-wrapper">
+                            <img id="profile-avatar" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Guest"
+                                alt="Profile Picture">
+                        </div>
+                    </div>
+
+                    <!-- Info Section -->
+                    <div class="profile-info">
+                        <h3 id="profile-name">Guest User</h3>
+                        <div class="name-underline"></div>
+
+                        <p class="profile-detail">EMAIL: <span id="profile-email">Not logged in</span></p>
+                        <p class="last-login-text">LAST LOGIN: <span id="profile-last-login">-</span></p>
+
+                        <button class="login-btn">Edit Profile</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer-section-dark">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Brand Column -->
+                <div class="footer-col">
+                    <h3 class="footer-brand-title">ProHand</h3>
+                    <p class="footer-description">
+                        Your trusted platform for finding and booking local household services with ease and
+                        confidence.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-col">
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-menu">
+                        <li><a href="../index/index.html">Home</a></li>
+                        <li><a href="../index/services.html">Services</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="../index/provider_login.html">Provider Login</a></li>
+                        <li><a href="../index/admin_login.html">Admin Login</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div class="footer-col">
+                    <h3 class="footer-heading">Services</h3>
+                    <ul class="footer-menu">
+                        <li><a href="../index/services.html">Electricians</a></li>
+                        <li><a href="../index/services.html">Plumbers</a></li>
+                        <li><a href="../index/services.html">Cleaners</a></li>
+                        <li><a href="../index/services.html">Handymen</a></li>
+                        <li><a href="../index/services.html">Painters</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Us -->
+                <div class="footer-col">
+                    <h3 class="footer-heading">Contact Us</h3>
+                    <ul class="footer-contact-list">
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <a href="tel:01812444115">01812444115</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:ashabuddin47@gmail.com">ashabuddin47@gmail.com</a>
+                        </li>
+                        <li class="location-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Purbachal American City, Kanchon 1460, Dhaka, Bangladesh</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-divider"></div>
+
+            <div class="footer-bottom-bar">
+                <p>&copy; 2025 HomeHero. All rights reserved.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script>
+        // Separate script to populate profile data on this page
+        document.addEventListener("DOMContentLoaded", () => {
+            const userName = localStorage.getItem("userName") || "Guest User";
+            const userEmail = localStorage.getItem("userEmail") || "Not logged in";
+
+            const profileNameEl = document.getElementById("profile-name");
+            const profileEmailEl = document.getElementById("profile-email");
+            const profileLastLoginEl = document.getElementById("profile-last-login");
+            const profileAvatarEl = document.getElementById("profile-avatar");
+
+            if (profileNameEl) profileNameEl.innerText = userName;
+            if (profileEmailEl) profileEmailEl.innerText = userEmail;
+
+            // Set current time as last login for display purposes
+            if (profileLastLoginEl) {
+                const date = new Date();
+                profileLastLoginEl.innerText = date.toUTCString();
+            }
+
+            // Set dynamic avatar
+            if (profileAvatarEl) {
+                // Use the user's name as seed for consistent avatar
+                profileAvatarEl.src = `https://api.dicebear.com/7.x/avataaars/svg?seed=${userName}`;
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+/* ========================
+   WHY CHOOSE HOMEHERO ANIMATIONS
+   ======================== */
+
+/* Fade In Up Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Bounce In Animation for Icons */
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+
+    70% {
+        transform: scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Initial State - Hidden */
+.why-choose-prohand h2 {
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.why-choose-prohand>p {
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.why-choose-prohand .service-card {
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+/* Animated State - Triggered by JS */
+.why-choose-prohand h2.animate {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.why-choose-prohand>p.animate {
+    animation: fadeInUp 0.8s ease-out 0.2s forwards;
+}
+
+.why-choose-prohand .service-card.animate {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Icon Bounce Animation */
+.why-choose-prohand .service-card.animate .icon {
+    animation: bounceIn 0.8s ease-out forwards;
+}
+
+/* Staggered Animation Delays for Cards */
+.why-choose-prohand .service-card.animate:nth-child(1) {
+    animation-delay: 0.3s;
+}
+
+.why-choose-prohand .service-card.animate:nth-child(1) .icon {
+    animation-delay: 0.5s;
+}
+
+.why-choose-prohand .service-card.animate:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.why-choose-prohand .service-card.animate:nth-child(2) .icon {
+    animation-delay: 0.6s;
+}
+
+.why-choose-prohand .service-card.animate:nth-child(3) {
+    animation-delay: 0.5s;
+}
+
+.why-choose-prohand .service-card.animate:nth-child(3) .icon {
+    animation-delay: 0.7s;
+}
+
+.why-choose-prohand .service-card.animate:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+.why-choose-prohand .service-card.animate:nth-child(4) .icon {
+    animation-delay: 0.8s;
+}
+
+.why-choose-prohand .service-card.animate:nth-child(5) {
+    animation-delay: 0.7s;
+}
+
+.why-choose-prohand .service-card.animate:nth-child(5) .icon {
+    animation-delay: 0.9s;
+}
+
+.why-choose-prohand .service-card.animate:nth-child(6) {
+    animation-delay: 0.8s;
+}
+
+.why-choose-prohand .service-card.animate:nth-child(6) .icon {
+    animation-delay: 1.0s;
+}
+
+/* Hover Effects - Enhanced */
+.why-choose-prohand .service-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.why-choose-prohand .service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.why-choose-prohand .service-card .icon {
+    transition: transform 0.3s ease;
+}
+
+.why-choose-prohand .service-card:hover .icon {
+    transform: scale(1.2) rotate(5deg);
+}

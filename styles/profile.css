@@ -1,0 +1,158 @@
+/* ========================
+   PROFILE PAGE STYLES
+   ======================== */
+
+#profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    padding: 40px 20px;
+    background-color: #f8fafc;
+    /* Light background for the page */
+    animation: fadeIn 0.5s ease-out;
+}
+
+.profile-container {
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Header Text */
+.profile-header-text h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 0.5rem;
+}
+
+.profile-header-text p {
+    color: #475569;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+
+/* Profile Card */
+.profile-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.profile-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Dark Blue Banner */
+.card-banner {
+    background-color: #1e293b;
+    /* Dark slate/blue color */
+    height: 140px;
+    width: 100%;
+}
+
+/* Profile Image Container */
+.profile-image-container {
+    position: relative;
+    margin-top: -75px;
+    /* Overlap half of the image size */
+    display: flex;
+    justify-content: center;
+}
+
+.avatar-wrapper {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: white;
+    padding: 6px;
+    /* White border effect */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.avatar-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #f1f5f9;
+    /* Inner light border */
+}
+
+/* Profile Info */
+.profile-info {
+    padding: 20px 30px 40px;
+    text-align: center;
+}
+
+.profile-info h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 5px;
+}
+
+/* Blue underline for name */
+.name-underline {
+    width: 50px;
+    height: 3px;
+    background-color: #3b82f6;
+    margin: 0 auto 20px;
+    border-radius: 2px;
+}
+
+.profile-detail {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    /* Muted text color */
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.profile-detail span {
+    color: #64748b;
+}
+
+.last-login-text {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin-bottom: 30px;
+}
+
+/* Edit Button */
+.edit-profile-btn {
+    width: 100%;
+    background-color: #000000;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.edit-profile-btn:hover {
+    background-color: #333333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

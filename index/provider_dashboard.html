@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Provider Dashboard - ProHand</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+        }
+
+        .dashboard-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 260px;
+            background: #0f172a;
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+        }
+
+        .nav-item {
+            padding: 0.75rem 1rem;
+            margin: 0.25rem 0;
+            border-radius: 0.5rem;
+            color: #94a3b8;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all 0.2s;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            background: #1e293b;
+            color: white;
+        }
+
+        .user-info {
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid #1e293b;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 2rem;
+        }
+
+        .header {
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: #64748b;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-card h3 {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card .value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        /* Requests Table */
+        .requests-section {
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .section-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 1rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        th {
+            background: #f8fafc;
+            font-weight: 600;
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .status-pending {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .status-accepted {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .status-rejected {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .status-completed {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .action-btn {
+            padding: 0.4rem 0.8rem;
+            border: none;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            font-size: 0.85rem;
+            margin-right: 0.5rem;
+            transition: opacity 0.2s;
+        }
+
+        .btn-accept {
+            background: #16a34a;
+            color: white;
+        }
+
+        .btn-reject {
+            background: #dc2626;
+            color: white;
+        }
+
+        .btn-complete {
+            background: #2563eb;
+            color: white;
+        }
+
+        .action-btn:hover {
+            opacity: 0.9;
+        }
+
+        .action-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="brand"><i class="fas fa-hammer"></i> ProHand</div>
+            <div class="nav-item active"><i class="fas fa-chart-line"></i> Dashboard</div>
+            <div class="nav-item"><i class="fas fa-clipboard-list"></i> My Requests</div>
+            <div class="nav-item"><i class="fas fa-cog"></i> Settings</div>
+
+            <div class="user-info">
+                <div style="font-weight:600;" id="providerName">Provider</div>
+                <div style="font-size:0.85rem; color:#94a3b8;" id="providerCategory">Service Provider</div>
+                <button onclick="logout()"
+                    style="margin-top:1rem; width:100%; padding:0.5rem; background:#1e293b; color:white; border:none; border-radius:0.5rem; cursor:pointer;">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="header">
+                <h1>Service Requests</h1>
+                <p>Manage your incoming booking requests</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Pending Requests</h3>
+                    <div class="value" id="pendingCount">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Accepted</h3>
+                    <div class="value" id="acceptedCount">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Completed</h3>
+                    <div class="value" id="completedCount">0</div>
+                </div>
+            </div>
+
+            <div class="requests-section">
+                <div class="section-header">
+                    <h3>All Requests</h3>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Customer</th>
+                            <th>Service</th>
+                            <th>Location</th>
+                            <th>Date</th>
+                            <th>Price</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="requestsTable">
+                        <tr>
+                            <td colspan="8" style="text-align:center; padding:2rem; color:#94a3b8;">Loading...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const provider = JSON.parse(localStorage.getItem('provider'));
+        if (!provider || provider.role !== 'provider') {
+            window.location.href = 'provider_login.html';
+        }
+
+        document.getElementById('providerName').innerText = provider.name;
+        document.getElementById('providerCategory').innerText = 'Service Provider';
+
+        function logout() {
+            localStorage.removeItem('provider');
+            window.location.href = 'provider_login.html';
+        }
+
+        function loadRequests() {
+            fetch(`../php/provider/get_requests.php?provider_id=${provider.id}`)
+                .then(res => res.json())
+                .then(data => {
+                    const tbody = document.getElementById('requestsTable');
+                    let pending = 0, accepted = 0, completed = 0;
+
+                    if (data.length === 0) {
+                        tbody.innerHTML = '<tr><td colspan="8" style="text-align:center; padding:2rem; color:#94a3b8;">No requests yet</td></tr>';
+                        return;
+                    }
+
+                    tbody.innerHTML = data.map(req => {
+                        if (req.status === 'pending') pending++;
+                        if (req.status === 'accepted') accepted++;
+                        if (req.status === 'completed') completed++;
+
+                        let actions = '';
+                        if (req.status === 'pending') {
+                            actions = `
+                                <button onclick="updateStatus(${req.id}, 'accepted')" class="action-btn btn-accept">Accept</button>
+                                <button onclick="updateStatus(${req.id}, 'rejected')" class="action-btn btn-reject">Reject</button>
+                            `;
+                        } else if (req.status === 'accepted') {
+                            actions = `<button onclick="updateStatus(${req.id}, 'completed')" class="action-btn btn-complete">Mark Complete</button>`;
+                        } else {
+                            actions = '<span style="color:#94a3b8; font-size:0.9rem;">-</span>';
+                        }
+
+                        return `
+                            <tr>
+                                <td>#${req.id}</td>
+                                <td><strong>${req.customer_name}</strong></td>
+                                <td>${req.service_title}</td>
+                                <td>${req.location || 'N/A'}</td>
+                                <td>${req.booking_date}</td>
+                                <td>$${req.offered_price}</td>
+                                <td><span class="status-badge status-${req.status}">${req.status.charAt(0).toUpperCase() + req.status.slice(1)}</span></td>
+                                <td>${actions}</td>
+                            </tr>
+                        `;
+                    }).join('');
+
+                    document.getElementById('pendingCount').innerText = pending;
+                    document.getElementById('acceptedCount').innerText = accepted;
+                    document.getElementById('completedCount').innerText = completed;
+                });
+        }
+
+        function updateStatus(id, status) {
+            const formData = new FormData();
+            formData.append('booking_id', id);
+            formData.append('status', status);
+
+            fetch('../php/provider/update_request.php', { method: 'POST', body: formData })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        loadRequests();
+                    } else {
+                        alert('Error updating status');
+                    }
+                });
+        }
+
+        loadRequests();
+    </script>
+</body>
+
+</html>

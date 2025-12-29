@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../images/Favicon/favicon.png" type="image/x-icon">
+    <title>Become a Service Provider - ProHand</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles/style.css">
+    <style>
+        .register-container {
+            max-width: 500px;
+            margin: 4rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 0.5rem;
+            box-sizing: border-box;
+        }
+
+        .register-btn {
+            width: 100%;
+            padding: 1rem;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .register-btn:hover {
+            background: #1d4ed8;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <a href="../index/index.html" class="logo-link">
+                    <img class="Logo" src="../images/Logo/ProHand Logo.png" alt="ProHand Logo">
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="../index/index.html" class="nav-item"><i class="fas fa-house"></i> <span>Home</span></a>
+                <a href="../index/services.html" class="nav-item"><i class="fas fa-gears"></i> <span>Services</span></a>
+            </div>
+            <div class="nav-actions">
+                <div id="auth-btn">
+                    <a href="../index/login.html" class="login-btn">Login</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="register-container">
+        <h2 style="text-align:center; margin-bottom:1.5rem;">Join ProHand as a Pro</h2>
+        <form id="proRegForm">
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" name="name" required>
+            </div>
+            <div class="form-group">
+                <label>Service Category</label>
+                <select name="category" required>
+                    <option value="">Select Category</option>
+                    <option value="Plumber">Plumber</option>
+                    <option value="Electrician">Electrician</option>
+                    <option value="Cleaner">Cleaner</option>
+                    <option value="Mechanic">Mechanic</option>
+                    <option value="Painter">Painter</option>
+                    <option value="Handyman">Handyman</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label>Address</label>
+                <textarea name="address" rows="2" required></textarea>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" required>
+            </div>
+            <button type="submit" class="register-btn">Register</button>
+        </form>
+        <p style="text-align:center; margin-top:1rem;">Already have an account? <a href="provider_login.html">Login
+                here</a></p>
+    </div>
+
+    <footer class="footer-section-dark">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3 class="footer-brand-title">ProHand</h3>
+                    <p class="footer-description">Your trusted platform for finding and booking local household services
+                        with ease and confidence.</p>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-menu">
+                        <li><a href="../index/index.html">Home</a></li>
+                        <li><a href="../index/services.html">Services</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-heading">Services</h3>
+                    <ul class="footer-menu">
+                        <li><a href="../index/services.html">Electricians</a></li>
+                        <li><a href="../index/services.html">Plumbers</a></li>
+                        <li><a href="../index/services.html">Cleaners</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-heading">Contact Us</h3>
+                    <ul class="footer-contact-list">
+                        <li><i class="fas fa-phone-alt"></i> <a href="tel:01812444115">01812444115</a></li>
+                        <li><i class="fas fa-envelope"></i> <a
+                                href="mailto:ashabuddin47@gmail.com">ashabuddin47@gmail.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-bottom-bar">
+                <p>&copy; 2025 HomeHero. All rights reserved.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('proRegForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            fetch('../php/auth/register_provider.php', { method: 'POST', body: formData })
+                .then(res => res.json())
+                .then(data => {
+                    alert(data.message);
+                    if (data.status === 'success') window.location.href = 'provider_login.html';
+                });
+        });
+    </script>
+</body>
+
+</html>

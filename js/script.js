@@ -23,7 +23,7 @@ function updateNavbar() {
     const isAddServicesPage = path.includes("addServices.html");
     const isBookServicePage = path.includes("bookservice.html");
     const isMyServices = hash === "#myservices";
-    const isProfile = hash === "#profile";
+    const isProfile = path.includes("profile.html");
 
     if (user === "true") {
         // Update Logout Button
@@ -55,7 +55,7 @@ function updateNavbar() {
                 <i class="fas fa-bookmark"></i>
                 <span>My Bookings</span>
             </a>
-            <a href="#profile" class="nav-item ${isProfile ? 'active' : ''}">
+            <a href="../index/profile.html" class="nav-item ${isProfile ? 'active' : ''}">
                 <i class="fas fa-user"></i>
                 <span>Profile</span>
             </a>
@@ -138,17 +138,32 @@ if (loginForm) {
             method: "POST",
             body: formData
         })
-            .then(res => res.text())
+            .then(res => res.json()) // Change text() to json()
             .then(data => {
-                alert(data);
-                if (data.includes("Login successful")) {
-                    const parts = data.split("|");
+                if (data.status === "success") {
+                    console.log("Login successful:", data.user);
+
+                    // Save user session data
                     localStorage.setItem("user", "true");
-                    localStorage.setItem("userEmail", email);
+                    localStorage.setItem("userEmail", data.user.email);
+                    localStorage.setItem("userName", data.user.name);
+                    localStorage.setItem("userId", data.user.id);
+                    localStorage.setItem("userRole", data.user.role);
+
+                    // Allow saving password if needed for auto-fill (optional/insecure but matches previous logic)
                     localStorage.setItem("userPassword", password);
-                    if (parts[1]) localStorage.setItem("userName", parts[1]);
+
+                    alert("Login Successful! Welcome " + data.user.name);
                     window.location.href = "../index/index.html";
+                } else {
+                    // Handle error case
+                    alert(data.message || "Login failed. Please check your credentials.");
                 }
+            })
+            .catch(err => {
+                console.error("Login Error:", err);
+                // Fallback for debugging if JSON parsing fails
+                alert("An unexpected error occurred. Check console for details.");
             });
     });
 }
@@ -468,6 +483,31 @@ function showSection() {
             if (emailInput && userEmail) emailInput.value = userEmail;
             if (nameInput && userName) nameInput.value = userName;
         }
+
+        // Populate Profile Data
+        if (hash === "#profile") {
+            const userName = localStorage.getItem("userName") || "Guest User";
+            const userEmail = localStorage.getItem("userEmail") || "Not logged in";
+
+            const profileNameEl = document.getElementById("profile-name");
+            const profileEmailEl = document.getElementById("profile-email");
+            const profileLastLoginEl = document.getElementById("profile-last-login");
+            const profileAvatarEl = document.getElementById("profile-avatar");
+
+            if (profileNameEl) profileNameEl.innerText = userName;
+            if (profileEmailEl) profileEmailEl.innerText = userEmail;
+
+            // Set current time as last login for display purposes
+            if (profileLastLoginEl) {
+                const date = new Date();
+                profileLastLoginEl.innerText = date.toUTCString();
+            }
+
+            // Set dynamic avatar
+            if (profileAvatarEl) {
+                profileAvatarEl.src = `https://api.dicebear.com/7.x/avataaars/svg?seed=${userName}`;
+            }
+        }
     }
 }
 
@@ -503,6 +543,189 @@ document.addEventListener("submit", (e) => {
                 alert("Failed to submit service. Please try again.");
             });
     }
+});
+
+// ===============================
+// TOP RATED SERVICES SCROLL ANIMATION
+// ===============================
+document.addEventListener("DOMContentLoaded", () => {
+    const latestTitle = document.querySelector('.latest-title');
+    const serviceCards = document.querySelectorAll('.card-container .service-card');
+
+    if (!latestTitle || serviceCards.length === 0) return;
+
+    // Create Intersection Observer
+    const observerOptions = {
+        threshold: 0.2, // Trigger when 20% of element is visible
+        rootMargin: '0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Add animate class when element enters viewport
+                if (entry.target.classList.contains('latest-title')) {
+                    entry.target.classList.add('animate');
+                } else if (entry.target.classList.contains('service-card')) {
+                    entry.target.classList.add('animate');
+                }
+            } else {
+                // Remove animate class when element leaves viewport
+                // This allows animation to replay when scrolling back
+                if (entry.target.classList.contains('latest-title')) {
+                    entry.target.classList.remove('animate');
+                } else if (entry.target.classList.contains('service-card')) {
+                    entry.target.classList.remove('animate');
+                }
+            }
+        });
+    }, observerOptions);
+
+    // Observe the title
+    observer.observe(latestTitle);
+
+    // Observe each service card
+    serviceCards.forEach(card => {
+        observer.observe(card);
+    });
+});
+
+// ===============================
+// WHY CHOOSE HOMEHERO SCROLL ANIMATION
+// ===============================
+document.addEventListener("DOMContentLoaded", () => {
+    const whyChooseSection = document.querySelector('.why-choose-prohand');
+
+    if (!whyChooseSection) return;
+
+    const whyChooseTitle = whyChooseSection.querySelector('h2');
+    const whyChooseDesc = whyChooseSection.querySelector('p');
+    const whyChooseCards = whyChooseSection.querySelectorAll('.service-card');
+
+    if (!whyChooseTitle || whyChooseCards.length === 0) return;
+
+    // Create Intersection Observer for Why Choose section
+    const whyChooseObserverOptions = {
+        threshold: 0.15, // Trigger when 15% of element is visible
+        rootMargin: '0px'
+    };
+
+    const whyChooseObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Add animate class when element enters viewport
+                entry.target.classList.add('animate');
+            } else {
+                // Remove animate class to allow replay when scrolling back
+                entry.target.classList.remove('animate');
+            }
+        });
+    }, whyChooseObserverOptions);
+
+    // Observe the title
+    if (whyChooseTitle) {
+        whyChooseObserver.observe(whyChooseTitle);
+    }
+
+    // Observe the description
+    if (whyChooseDesc) {
+        whyChooseObserver.observe(whyChooseDesc);
+    }
+
+    // Observe each feature card
+    whyChooseCards.forEach(card => {
+        whyChooseObserver.observe(card);
+    });
+});
+
+// ===============================
+// TESTIMONIALS SCROLL ANIMATION
+// ===============================
+document.addEventListener("DOMContentLoaded", () => {
+    const testimonialSection = document.querySelector('.testimonial-section');
+
+    if (!testimonialSection) return;
+
+    const testimonialTitle = testimonialSection.querySelector('.testimonial-title h2');
+    const testimonialDesc = testimonialSection.querySelector('.testimonial-title p');
+    const testimonialCards = testimonialSection.querySelectorAll('.testimonial-card');
+
+    if (!testimonialTitle || testimonialCards.length === 0) return;
+
+    // Create Intersection Observer for Testimonials
+    const testimonialObserverOptions = {
+        threshold: 0.15, // Trigger when 15% of element is visible
+        rootMargin: '0px'
+    };
+
+    const testimonialObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Add animate class when element enters viewport
+                entry.target.classList.add('animate');
+            } else {
+                // Remove animate class to allow replay when scrolling back
+                entry.target.classList.remove('animate');
+            }
+        });
+    }, testimonialObserverOptions);
+
+    // Observe the title
+    if (testimonialTitle) {
+        testimonialObserver.observe(testimonialTitle);
+    }
+
+    // Observe the description
+    if (testimonialDesc) {
+        testimonialObserver.observe(testimonialDesc);
+    }
+
+    // Observe each testimonial card
+    testimonialCards.forEach(card => {
+        testimonialObserver.observe(card);
+    });
+});
+
+// ===============================
+// CTA SECTION SCROLL ANIMATION
+// ===============================
+document.addEventListener("DOMContentLoaded", () => {
+    const ctaSection = document.querySelector('.cta-section');
+
+    if (!ctaSection) return;
+
+    const ctaBtn = ctaSection.querySelector('.cta-btn');
+
+    // Create Intersection Observer for CTA
+    const ctaObserverOptions = {
+        threshold: 0.2, // Trigger when 20% of element is visible
+        rootMargin: '0px'
+    };
+
+    const ctaObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Add animate class when element enters viewport
+                entry.target.classList.add('animate');
+
+                // Add continuous pulsing to button after initial animation
+                if (ctaBtn) {
+                    setTimeout(() => {
+                        ctaBtn.classList.add('pulsing');
+                    }, 1600); // Wait for initial animation to complete
+                }
+            } else {
+                // Remove animate class to allow replay when scrolling back
+                entry.target.classList.remove('animate');
+                if (ctaBtn) {
+                    ctaBtn.classList.remove('pulsing');
+                }
+            }
+        });
+    }, ctaObserverOptions);
+
+    // Observe the CTA section
+    ctaObserver.observe(ctaSection);
 });
 
 console.log("ProHand JS Loaded");

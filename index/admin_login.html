@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../images/Favicon/favicon.png" type="image/x-icon">
+    <title>Admin Login - ProHand</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles/style.css">
+    <style>
+        .admin-login-container {
+            max-width: 400px;
+            margin: 4rem auto;
+            padding: 2.5rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .admin-login-container h2 {
+            color: #0f172a;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .admin-login-container p {
+            color: #64748b;
+            margin-bottom: 2rem;
+        }
+
+        .admin-login-container input {
+            width: 100%;
+            padding: 0.875rem;
+            margin: 0.8rem 0;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+
+        .login-btn-submit {
+            width: 100%;
+            padding: 12px;
+            background: #2563eb;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .login-btn-submit:hover {
+            background: #1d4ed8;
+        }
+
+        .error-msg {
+            color: #dc2626;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <a href="../index/index.html" class="logo-link">
+                    <img class="Logo" src="../images/Logo/ProHand Logo.png" alt="ProHand Logo">
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="../index/index.html" class="nav-item"><i class="fas fa-house"></i> <span>Home</span></a>
+                <a href="../index/services.html" class="nav-item"><i class="fas fa-gears"></i> <span>Services</span></a>
+            </div>
+            <div class="nav-actions">
+                <div id="auth-btn">
+                    <a href="../index/login.html" class="login-btn">Login</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="admin-login-container">
+        <div style="font-size:3rem; margin-bottom:1rem;">🔐</div>
+        <h2>Admin Portal</h2>
+        <p>ProHand System Administration</p>
+        <form id="adminLoginForm">
+            <input type="email" name="email" placeholder="Admin Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit" class="login-btn-submit">Access Dashboard</button>
+        </form>
+        <p class="error-msg" id="errorMsg"></p>
+    </div>
+
+    <footer class="footer-section-dark">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3 class="footer-brand-title">ProHand</h3>
+                    <p class="footer-description">Your trusted platform for finding and booking local household services
+                        with ease and confidence.</p>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-menu">
+                        <li><a href="../index/index.html">Home</a></li>
+                        <li><a href="../index/services.html">Services</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-heading">Services</h3>
+                    <ul class="footer-menu">
+                        <li><a href="../index/services.html">Electricians</a></li>
+                        <li><a href="../index/services.html">Plumbers</a></li>
+                        <li><a href="../index/services.html">Cleaners</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-heading">Contact Us</h3>
+                    <ul class="footer-contact-list">
+                        <li><i class="fas fa-phone-alt"></i> <a href="tel:01812444115">01812444115</a></li>
+                        <li><i class="fas fa-envelope"></i> <a
+                                href="mailto:ashabuddin47@gmail.com">ashabuddin47@gmail.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-bottom-bar">
+                <p>&copy; 2025 HomeHero. All rights reserved.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('adminLoginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+
+            fetch('../php/auth/login.php', { method: 'POST', body: formData })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.status === 'success' && data.user.role === 'admin') {
+                        localStorage.setItem('admin', JSON.stringify(data.user));
+                        window.location.href = 'admin_dashboard.html';
+                    } else {
+                        document.getElementById('errorMsg').style.display = 'block';
+                        document.getElementById('errorMsg').innerText = data.user?.role !== 'admin' ? 'Admin access only' : data.message;
+                    }
+                });
+        });
+    </script>
+</body>
+
+</html>
