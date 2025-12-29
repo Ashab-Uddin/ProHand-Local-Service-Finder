@@ -1,147 +1,17 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../images/Favicon/favicon.png" type="image/x-icon">
-
-    <title>Login - ProHand</title>
-
-    <!-- Font Awesome -->
+    <title>Add Service - ProHand</title>
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <!-- Main CSS -->
     <link rel="stylesheet" href="../styles/style.css">
-
-    <style>
-        /* ===== HEADER LAYOUT ===== */
-        nav.container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            flex: 1;
-        }
-
-        .nav-links {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            /* 🔥 CENTER HERE */
-            gap: 30px;
-        }
-
-        .nav-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            color: #1f2937;
-        }
-
-
-
-        .nav-actions {
-            flex: 1;
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        /* ===== LOGIN PAGE ===== */
-        .login-container {
-            width: 100%;
-            max-width: 420px;
-            margin: 2rem auto;
-        }
-
-        .card {
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .card h2 {
-            text-align: center;
-            margin-bottom: 15px;
-            color: #1f2937;
-        }
-
-        .card hr {
-            margin-bottom: 20px;
-            border: none;
-            height: 1px;
-            background: #e5e7eb;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 6px;
-            font-size: 14px;
-            color: #374151;
-            font-weight: 600;
-        }
-
-        input {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: 1px solid #d1d5db;
-            border-radius: 6px;
-            font-size: 1rem;
-            outline: none;
-        }
-
-        input:focus {
-            border-color: #2563eb;
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-
-        .login-btn {
-            width: 100%;
-            padding: 12px;
-            background: #2563eb;
-            color: #fff;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .login-btn:hover {
-            background: #1d4ed8;
-        }
-
-        .header-login {
-            width: auto;
-            padding: 8px 18px;
-        }
-
-        .register {
-            text-align: center;
-            margin-top: 15px;
-            font-size: 14px;
-        }
-
-        .register a {
-            color: #2563eb;
-            text-decoration: none;
-        }
-
-        .register a:hover {
-            text-decoration: underline;
-        }
-    </style>
 </head>
 
 <body>
-
-    <!-- ===== HEADER ===== -->
     <header>
         <nav class="container">
             <div class="logo">
@@ -150,53 +20,94 @@
                 </a>
             </div>
 
-
             <div class="nav-links" id="main-nav-links">
                 <a href="../index/index.html" class="nav-item">
                     <i class="fas fa-house"></i>
                     <span>Home</span>
                 </a>
-
                 <a href="../index/services.html" class="nav-item">
-                    <i class="fas fa-briefcase"></i>
+                    <i class="fas fa-gears"></i>
                     <span>Services</span>
                 </a>
             </div>
 
-
-
             <div class="nav-actions">
                 <div id="auth-btn">
-                    <a href="../index/login.html" class="login-btn">Login</a>
+                    <!-- Dynamic Auth Button -->
                 </div>
                 <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
             </div>
         </nav>
     </header>
 
-    <!-- ===== LOGIN FORM ===== -->
-    <div class="login-container">
-        <div class="card">
-            <h2>Login to your account</h2>
-            <hr>
+    <main class="section-container">
+        <div class="form-wrapper">
+            <div class="form-card">
+                <div class="form-header">
+                    <h2>Submit Your Service</h2>
+                    <p>Share your professional service with our community</p>
+                </div>
 
-            <form action="../php/auth/login.php" id="loginForm" method="post">
-                <label>Email address</label>
-                <input type="email" name="email" required>
+                <form id="add-service-form" class="premium-form">
+                    <div class="input-group">
+                        <label for="service-name">Service Name *</label>
+                        <input type="text" id="service-name" name="name"
+                            placeholder="e.g., Web Development, Graphic Design" required>
+                    </div>
 
-                <label>Password</label>
-                <input type="password" name="password" required>
+                    <div class="input-group">
+                        <label for="service-category">Category *</label>
+                        <select id="service-category" name="category" required>
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="Handyman">Handyman</option>
+                            <option value="Cleaning">Cleaning</option>
+                            <option value="Electrical">Electrical</option>
+                            <option value="Plumbing">Plumbing</option>
+                            <option value="Automotive">Automotive</option>
+                            <option value="Photography">Photography</option>
+                            <option value="Electronics">Electronics</option>
+                            <option value="HVAC">HVAC</option>
+                        </select>
+                    </div>
 
-                <button type="submit" class="login-btn">Login</button>
+                    <div class="input-group">
+                        <label for="service-price">Price *</label>
+                        <div class="price-input-wrapper">
+                            <span class="currency-symbol">$</span>
+                            <input type="number" id="service-price" name="price" step="0.01" placeholder="e.g., 99.99"
+                                required>
+                        </div>
+                    </div>
 
-                <p class="register">
-                    Don't have an account?
-                    <a href="../index/register.html">Register</a>
-                </p>
-            </form>
+                    <div class="input-group">
+                        <label for="service-description">Description *</label>
+                        <textarea id="service-description" name="description" rows="4"
+                            placeholder="Describe your service in detail..." required></textarea>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="service-thumbnail">Service Image *</label>
+                        <input type="url" id="service-thumbnail" name="thumbnail"
+                            placeholder="https://example.com/image.jpg" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="provider-name">Provider Name *</label>
+                        <input type="text" id="provider-name" name="provider_name"
+                            placeholder="Your name or company name" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="provider-email">Email Address *</label>
+                        <input type="email" id="provider-email" name="provider_email" placeholder="email@example.com"
+                            readonly required>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Submit Service</button>
+                </form>
+            </div>
         </div>
-    </div>
-
+    </main>
 
     <footer class="footer-section-dark">
         <div class="container">
@@ -269,7 +180,18 @@
     </footer>
 
     <script src="../js/script.js"></script>
+    <script>
+        // Specific logic for this page after main script loads
+        document.addEventListener('DOMContentLoaded', () => {
+            const emailInput = document.getElementById("provider-email");
+            const nameInput = document.getElementById("provider-name");
+            const userEmail = localStorage.getItem("userEmail");
+            const userName = localStorage.getItem("userName");
 
+            if (emailInput && userEmail) emailInput.value = userEmail;
+            if (nameInput && userName) nameInput.value = userName;
+        });
+    </script>
 </body>
 
 </html>

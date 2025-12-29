@@ -1,147 +1,17 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../images/Favicon/favicon.png" type="image/x-icon">
-
-    <title>Login - ProHand</title>
-
-    <!-- Font Awesome -->
+    <title>My Bookings - ProHand</title>
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <!-- Main CSS -->
     <link rel="stylesheet" href="../styles/style.css">
-
-    <style>
-        /* ===== HEADER LAYOUT ===== */
-        nav.container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            flex: 1;
-        }
-
-        .nav-links {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            /* 🔥 CENTER HERE */
-            gap: 30px;
-        }
-
-        .nav-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            color: #1f2937;
-        }
-
-
-
-        .nav-actions {
-            flex: 1;
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        /* ===== LOGIN PAGE ===== */
-        .login-container {
-            width: 100%;
-            max-width: 420px;
-            margin: 2rem auto;
-        }
-
-        .card {
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .card h2 {
-            text-align: center;
-            margin-bottom: 15px;
-            color: #1f2937;
-        }
-
-        .card hr {
-            margin-bottom: 20px;
-            border: none;
-            height: 1px;
-            background: #e5e7eb;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 6px;
-            font-size: 14px;
-            color: #374151;
-            font-weight: 600;
-        }
-
-        input {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: 1px solid #d1d5db;
-            border-radius: 6px;
-            font-size: 1rem;
-            outline: none;
-        }
-
-        input:focus {
-            border-color: #2563eb;
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-
-        .login-btn {
-            width: 100%;
-            padding: 12px;
-            background: #2563eb;
-            color: #fff;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .login-btn:hover {
-            background: #1d4ed8;
-        }
-
-        .header-login {
-            width: auto;
-            padding: 8px 18px;
-        }
-
-        .register {
-            text-align: center;
-            margin-top: 15px;
-            font-size: 14px;
-        }
-
-        .register a {
-            color: #2563eb;
-            text-decoration: none;
-        }
-
-        .register a:hover {
-            text-decoration: underline;
-        }
-    </style>
 </head>
 
 <body>
-
-    <!-- ===== HEADER ===== -->
     <header>
         <nav class="container">
             <div class="logo">
@@ -150,53 +20,130 @@
                 </a>
             </div>
 
-
             <div class="nav-links" id="main-nav-links">
                 <a href="../index/index.html" class="nav-item">
                     <i class="fas fa-house"></i>
                     <span>Home</span>
                 </a>
-
                 <a href="../index/services.html" class="nav-item">
-                    <i class="fas fa-briefcase"></i>
+                    <i class="fas fa-gears"></i>
                     <span>Services</span>
+                </a>
+                <a href="../index/addServices.html" class="nav-item">
+                    <i class="fas fa-file-circle-plus"></i>
+                    <span>Add Services</span>
+                </a>
+                <a href="../index/bookservice.html" class="nav-item active">
+                    <i class="fas fa-bookmark"></i>
+                    <span>My Bookings</span>
                 </a>
             </div>
 
-
-
             <div class="nav-actions">
                 <div id="auth-btn">
-                    <a href="../index/login.html" class="login-btn">Login</a>
+                    <!-- Dynamic Auth Button -->
                 </div>
                 <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
             </div>
         </nav>
     </header>
 
-    <!-- ===== LOGIN FORM ===== -->
-    <div class="login-container">
-        <div class="card">
-            <h2>Login to your account</h2>
-            <hr>
-
-            <form action="../php/auth/login.php" id="loginForm" method="post">
-                <label>Email address</label>
-                <input type="email" name="email" required>
-
-                <label>Password</label>
-                <input type="password" name="password" required>
-
-                <button type="submit" class="login-btn">Login</button>
-
-                <p class="register">
-                    Don't have an account?
-                    <a href="../index/register.html">Register</a>
-                </p>
-            </form>
+    <main class="container py-8">
+        <div class="booking-header" style="text-align: center; margin-bottom: 2rem;">
+            <h2
+                style="font-size: 2.25rem; font-weight: 800; color: #1e293b; border-bottom: 3px solid #2563eb; display: inline-block; padding-bottom: 10px;">
+                My Bookings : <span id="booking-count">0</span>
+            </h2>
         </div>
-    </div>
 
+        <div class="bookings-table-container">
+            <table class="bookings-table">
+                <thead>
+                    <tr>
+                        <th>Sl No</th>
+                        <th>Image</th>
+                        <th>Service Name</th>
+                        <th>Price</th>
+                        <th>Provider</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="bookings-list">
+                    <!-- Dynamic bookings will be loaded here -->
+                    <tr>
+                        <td colspan="6" style="text-align: center; color: #64748b; padding: 3rem;">
+                            No bookings found yet. Explore our services to book one!
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="../js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchBookings();
+        });
+
+        function fetchBookings() {
+            const userEmail = localStorage.getItem('userEmail');
+            if (!userEmail) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            fetch(`../php/booking/get_user_bookings.php?email=${userEmail}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.error) {
+                        console.error(data.error);
+                        return;
+                    }
+                    updateBookingUI(data);
+                })
+                .catch(err => {
+                    console.error("Error fetching bookings:", err);
+                });
+        }
+
+        function updateBookingUI(bookings) {
+            const countEl = document.getElementById('booking-count');
+            const listEl = document.getElementById('bookings-list');
+
+            countEl.textContent = bookings.length;
+
+            if (bookings.length === 0) {
+                listEl.innerHTML = `<tr><td colspan="6" style="text-align: center; color: #64748b; padding: 3rem;">No bookings found yet. Explore our services to book one!</td></tr>`;
+                return;
+            }
+
+            listEl.innerHTML = bookings.map((booking, index) => `
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>
+                        <img src="${booking.thumbnail || '../images/Services/default.jpg'}" 
+                             alt="${booking.title}" class="service-img">
+                    </td>
+                    <td><span class="service-name">${booking.title}</span></td>
+                    <td><span class="price">$${booking.offered_price || booking.original_price}</span></td>
+                    <td>${booking.provider_name}</td>
+                    <td>
+                        <button class="btn-delete" onclick="cancelBooking(${booking.booking_id})">
+                            <i class="fas fa-trash"></i> Cancel
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function cancelBooking(id) {
+            if (confirm('Are you sure you want to cancel this booking?')) {
+                // Future implementation: Add cancel_booking.php
+                alert('Cancellation feature coming soon!');
+            }
+        }
+    </script>
 
     <footer class="footer-section-dark">
         <div class="container">
@@ -267,9 +214,6 @@
             </div>
         </div>
     </footer>
-
-    <script src="../js/script.js"></script>
-
 </body>
 
 </html>

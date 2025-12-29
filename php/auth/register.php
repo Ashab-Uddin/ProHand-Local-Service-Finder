@@ -35,4 +35,3 @@ if (mysqli_stmt_execute($stmt)) {
 } else {
     echo "Registration failed";
 }
-?>

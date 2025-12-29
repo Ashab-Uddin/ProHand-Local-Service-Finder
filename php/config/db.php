@@ -2,7 +2,7 @@
 $conn = mysqli_connect(
     "localhost",
     "root",
-    "",              // 🔥 password EMPTY
+    "",              // password EMPTY (set this in production)
     "prohand_db",
     4306
 );
@@ -10,6 +10,3 @@ $conn = mysqli_connect(
 if (!$conn) {
     die(mysqli_connect_error());
 }
-
-echo "Database Connected Successfully";
-?>
