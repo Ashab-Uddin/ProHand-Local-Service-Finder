@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/images//Favicon/favicon.png" type="image/x-icon">
     <title>ProHand - Local Service Finder</title>
+    <!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <link rel="stylesheet" href="/styles/style.css">
 </head>
 
@@ -13,13 +16,25 @@
     <header>
         <nav class="container">
             <div class="logo">
-                <a href="#home" class="logo-link">
+                <a href="/index/index.html" class="logo-link">
                     <img class="Logo" src="/images/Logo/ProHand Logo.png" alt="ProHand Logo">
                 </a>
             </div>
 
-            <div class="nav-links" id="main-nav-links">
-            </div>
+            <!-- === Center Navigation Links ====== -->
+<div class="nav-links" id="main-nav-links">
+    <a href="/index/index.html" class="nav-item">
+        <i class="fas fa-house"></i>
+        <span>Home</span>
+    </a>
+
+    <a href="services.html" class="nav-item">
+        <i class="fas fa-briefcase"></i>
+        <span>Services</span>
+    </a>
+</div>
+<!-- ========================= -->
+
 
             <div class="nav-actions">
                 <div id="auth-btn">
@@ -554,72 +569,6 @@
                     <button class="view-btn">View Details</button>
                 </div>
             </div>
-    </div>
-
-    <div id="login" class="container hidden">
-        <div class="login-container">
-            <div class="card">
-                <h2>Login to your account</h2>
-                <hr>
-
-                <form id="login-form">
-                    <label>Email address</label>
-                    <input type="email" id="login-email" placeholder="Enter your email address" required>
-
-                    <label>Password</label>
-                    <div class="password-box">
-                        <input type="password" id="login-password" placeholder="Enter your password" required>
-                        <span class="eye">👁</span>
-                    </div>
-
-                    <a href="#" class="forgot">Forgot password?</a>
-
-                    <button type="submit" class="login-btn">Login</button>
-
-                    <p class="or">or</p>
-
-                    <button type="button" class="google-btn">
-                        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
-                        Login with Google
-                    </button>
-
-                    <p class="register">
-                        Don't have an account? <a href="/index/register.html">Register</a>
-                    </p>
-                </form>
-            </div>
-        </div>
-    <div id="register" class="container hidden">
-        <div class="register-container">
-            <h2>Create Your Account</h2>
-            <form id="register-form">
-                <div class="form-group">
-                    <label for="reg-full-name">Full Name</label>
-                    <input type="text" id="reg-full-name" name="full-name" required>
-                </div>
-                <div class="form-group">
-                    <label for="reg-email">Email Address</label>
-                    <input type="email" id="reg-email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="reg-password">Password</label>
-                    <input type="password" id="reg-password" name="password" required>
-                </div>
-                <div class="form-group">
-                    <label for="reg-confirm-password">Confirm Password</label>
-                    <input type="password" id="reg-confirm-password" name="confirm-password" required>
-                </div>
-                <button type="submit" class="register-btn">Register</button>
-            </form>
-            <div class="login-link">
-                <p>Already have an account? <a href="#login">Login here</a></p>
-            </div>
-        </div>
-    </div>
-        <h2>My Services</h2>
-        <div id="my-services-list">
-            <!-- User's services -->
-        </div>
     </div>
 
     <div id="addservices" class="container hidden">

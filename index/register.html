@@ -90,13 +90,23 @@
                     <img class="Logo" src="../images/Logo/ProHand Logo.png" alt="ProHand Logo">
                 </a>
             </div>
+            
 
             <div class="nav-links" id="main-nav-links">
-                <!-- Add nav links if needed -->
-            </div>
+    <a href="/index/index.html" class="nav-item">
+        <i class="fas fa-house"></i>
+        <span>Home</span>
+    </a>
+
+    <a href="services.html" class="nav-item">
+        <i class="fas fa-briefcase"></i>
+        <span>Services</span>
+    </a>
+</div>
 
             <div class="nav-actions">
-                <a href="index.html" class="btn">Home</a>
+                <div id="auth-btn">
+                </div>
             </div>
         </nav>
     </header>
@@ -104,30 +114,37 @@
     <main>
         <div class="register-container">
             <h2>Create Your Account</h2>
-            <form action="#" method="post">
-                <div class="form-group">
-                    <label for="full-name">Full Name</label>
-                    <input type="text" id="full-name" name="full-name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <div class="form-group">
-                    <label for="confirm-password">Confirm Password</label>
-                    <input type="password" id="confirm-password" name="confirm-password" required>
-                </div>
-                <button type="submit" class="register-btn">Register</button>
-            </form>
+            <form action="../php/auth/register.php" method="post">
+
+
+    <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" name="name" required>
+    </div>
+
+    <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" name="email" required>
+    </div>
+
+    <div class="form-group">
+        <label>Password</label>
+        <input type="password" name="password" required>
+    </div>
+
+    <div class="form-group">
+        <label>Confirm Password</label>
+        <input type="password" name="confirm_password" required>
+    </div>
+
+    <button type="submit" class="register-btn">Register</button>
+</form>
+
             <div class="login-link">
                 <p>Already have an account? <a href="login.html">Login here</a></p>
             </div>
         </div>
     </main>
 </body>
-
+<script src="/js/script.js"></script>
 </html>

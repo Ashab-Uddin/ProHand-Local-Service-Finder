@@ -159,7 +159,8 @@
             </div>
 
             <div class="nav-actions">
-                <a href="index.html" class="btn">Home</a>
+                <div id="auth-btn">
+                </div>
             </div>
         </nav>
     </header>
@@ -169,33 +170,25 @@
         <h2>Login to your account</h2>
         <hr>
 
-        <form>
-            <label>Email address</label>
-            <input type="email" placeholder="Enter your email address" required>
+      <form action="/prohand/php/login.php" method="post">
+    <label>Email address</label>
+    <input type="email" name="email" required>
 
-            <label>Password</label>
-            <div class="password-box">
-                <input type="password" placeholder="Enter your password" required>
-                <span class="eye">👁</span>
-            </div>
+    <label>Password</label>
+    <input type="password" name="password" required>
 
-            <a href="#" class="forgot">Forgot password?</a>
+    <button type="submit" class="login-btn">Login</button>
 
-            <button type="submit" class="login-btn">Login</button>
+    <p class="register">
+        Don't have an account?
+        <a href="../index/register.html">Register</a>
+    </p>
+</form>
 
-            <p class="or">or</p>
+<script src="../js/script.js"></script>
 
-            <button type="button" class="google-btn">
-                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
-                Login with Google
-            </button>
-
-            <p class="register">
-                Don't have an account? <a href="/index/register.html">Register</a>
-            </p>
-        </form>
     </div>
 </div>
 
 </body>
-</html>
+<script src="/js/script.js"></script>
