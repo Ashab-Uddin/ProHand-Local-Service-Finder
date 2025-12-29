@@ -44,37 +44,38 @@ window.addEventListener('DOMContentLoaded', () => {
     loadLatestServices(); // This fetches your top-rated service cards
     updateNavbar();
     initScrollAnimations(); // Initialize scroll animations
+    initAuthForms(); // Initialize login and register forms
 });
 
 // --- 3. UI COMPONENTS ---
-// function createServiceCard(service, isBookable = true) {
-//     const stars = Array.from({length: 5}, (_, i) => `
-//         <svg class="star ${i < Math.floor(service.rating) ? '' : 'empty'}" viewBox="0 0 24 24">
-//             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-//         </svg>
-//     `).join('');
+function createServiceCard(service, isBookable = true) {
+    const stars = Array.from({length: 5}, (_, i) => `
+        <svg class="star ${i < Math.floor(service.rating) ? '' : 'empty'}" viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+    `).join('');
 
-//     return `
-//         <div class="service-card">
-//             <div class="card-image">
-//                 <img src="${service.thumbnail}" alt="${service.title}" loading="lazy">
-//                 <div class="card-category">${service.category}</div>
-//             </div>
-//             <div class="card-content">
-//                 <h3 class="card-title">${service.title}</h3>
-//                 <p class="card-desc">${service.shortDescription || service.description}</p>
-//                 <div class="rating">
-//                     <div class="stars">${stars}</div>
-//                     <span class="rating-text">(${service.rating})</span>
-//                 </div>
-//                 <div class="card-footer">
-//                     <p class="card-price">$${service.price}</p>
-//                     ${isBookable ? `<button class="btn book-btn" data-id="${service.id || service.title}">Book Now</button>` : ''}
-//                 </div>
-//             </div>
-//         </div>
-//     `;
-// }
+    return `
+        <div class="service-card">
+            <div class="card-image">
+                <img src="${service.thumbnail}" alt="${service.title}" loading="lazy">
+                <div class="card-category">${service.category}</div>
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">${service.title}</h3>
+                <p class="card-desc">${service.shortDescription || service.description}</p>
+                <div class="rating">
+                    <div class="stars">${stars}</div>
+                    <span class="rating-text">(${service.rating})</span>
+                </div>
+                <div class="card-footer">
+                    <p class="card-price">$${service.price}</p>
+                    ${isBookable ? `<button class="btn book-btn" data-id="${service.id || service.title}">Book Now</button>` : ''}
+                </div>
+            </div>
+        </div>
+    `;
+}
 
 // --- 4. NAVIGATION & AUTH UI ---
 function updateNavbar() {
@@ -97,8 +98,8 @@ function updateNavbar() {
     const isActive = (hash) => currentHash === hash ? 'active' : '';
 
     let navHtml = `
-        <a href="#home" class="nav-link ${isActive('#home')}">${icons.home} Home</a>
-        <a href="#services" class="nav-link ${isActive('#services')}">${icons.services} Services</a>
+        <a href="index.html" class="nav-link ${isActive('#home')}">${icons.home} Home</a>
+        <a href="services.html" class="nav-link ${isActive('#services')}">${icons.services} Services</a>
     `;
 
     if (user) {
@@ -146,6 +147,18 @@ function loadMyServices() {
     container.innerHTML = myServices.length
         ? myServices.map(s => createServiceCard(s, false)).join('')
         : `<p>You haven't added any services yet.</p>`;
+}
+
+function loadBookings() {
+    const container = document.getElementById('mybooking');
+    if (!container) return;
+    container.innerHTML = '<h2>My Bookings</h2><p>No bookings yet.</p>';
+}
+
+function loadProfile() {
+    const container = document.getElementById('profile');
+    if (!container) return;
+    container.innerHTML = '<h2>Profile</h2><p>User profile information.</p>';
 }
 
 // --- 6. SLIDER LOGIC ---
@@ -218,7 +231,8 @@ function initScrollAnimations() {
     const sections = [
         { el: document.querySelector('.latest-section'), class: 'animate-zoom' },
         { el: document.querySelector('.why-choose-prohand'), class: 'animate-features' },
-        { el: document.querySelector('.testimonial-section'), class: 'animate-testimonials' }
+        { el: document.querySelector('.testimonial-section'), class: 'animate-testimonials' },
+        { el: document.querySelector('.services-grid'), class: 'animate-services' }
     ];
 
     const observer = new IntersectionObserver((entries) => {
@@ -243,4 +257,74 @@ function initScrollAnimations() {
             observer.observe(section.el);
         }
     });
+}
+
+// --- 8. AUTH FORMS ---
+function initAuthForms() {
+    const loginForm = document.getElementById('login-form');
+    const registerForm = document.getElementById('register-form');
+
+    if (loginForm) {
+        loginForm.addEventListener('submit', handleLogin);
+    }
+
+    if (registerForm) {
+        registerForm.addEventListener('submit', handleRegister);
+    }
+}
+
+async function handleLogin(e) {
+    e.preventDefault();
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-password').value;
+
+    try {
+        const response = await fetch(`${CONFIG.API_BASE_URL}/login`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+        });
+
+        if (response.ok) {
+            const user = await response.json();
+            localStorage.setItem('user', JSON.stringify(user));
+            state.user = user;
+            updateNavbar();
+            window.location.hash = '#home';
+        } else {
+            alert('Login failed. Please check your credentials.');
+        }
+    } catch (err) {
+        alert('Login failed. Please try again.');
+    }
+}
+
+async function handleRegister(e) {
+    e.preventDefault();
+    const fullName = document.getElementById('reg-full-name').value;
+    const email = document.getElementById('reg-email').value;
+    const password = document.getElementById('reg-password').value;
+    const confirmPassword = document.getElementById('reg-confirm-password').value;
+
+    if (password !== confirmPassword) {
+        alert('Passwords do not match.');
+        return;
+    }
+
+    try {
+        const response = await fetch(`${CONFIG.API_BASE_URL}/register`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ fullName, email, password })
+        });
+
+        if (response.ok) {
+            alert('Registration successful! Please login.');
+            window.location.hash = '#login';
+        } else {
+            alert('Registration failed. Please try again.');
+        }
+    } catch (err) {
+        alert('Registration failed. Please try again.');
+    }
 }

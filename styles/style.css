@@ -1380,3 +1380,150 @@ footer {
 .nav-link.active {
     color: #2563eb;
 }
+
+/* Login and Register Forms */
+.login-container, .register-container {
+    max-width: 420px;
+    margin: 2rem auto;
+}
+
+.card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.card h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #1f2937;
+}
+
+.card hr {
+    margin-bottom: 20px;
+    border: none;
+    height: 1px;
+    background: #e5e7eb;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #374151;
+}
+
+.card label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #374151;
+    font-weight: 600;
+}
+
+.card input, .form-group input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    outline: none;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.card input:focus, .form-group input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.password-box {
+    position: relative;
+}
+
+.password-box .eye {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    cursor: pointer;
+}
+
+.forgot {
+    display: block;
+    text-align: left;
+    font-size: 13px;
+    color: #2563eb;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+.forgot:hover {
+    text-decoration: underline;
+}
+
+.login-btn, .register-btn {
+    width: 100%;
+    padding: 12px;
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.login-btn:hover, .register-btn:hover {
+    background: #1d4ed8;
+}
+
+.or {
+    text-align: center;
+    margin: 15px 0;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.google-btn {
+    width: 100%;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+.google-btn:hover {
+    border-color: #2563eb;
+}
+
+.google-btn img {
+    width: 18px;
+}
+
+.register .register, .login-link {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.register a, .login-link a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.register a:hover, .login-link a:hover {
+    text-decoration: underline;
+}

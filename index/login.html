@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../images/Favicon/favicon.png" type="image/x-icon">
+    <title>Login - ProHand</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <style>
+        .login-container {
+            width: 100%;
+            max-width: 420px;
+            margin: 2rem auto;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .card h2 {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #1f2937;
+        }
+
+        .card hr {
+            margin-bottom: 20px;
+            border: none;
+            height: 1px;
+            background: #e5e7eb;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 14px;
+            color: #374151;
+            font-weight: 600;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            outline: none;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .password-box {
+            position: relative;
+        }
+
+        .password-box .eye {
+            position: absolute;
+            right: 12px;
+            top: 12px;
+            cursor: pointer;
+        }
+
+        .forgot {
+            display: block;
+            text-align: left;
+            font-size: 13px;
+            color: #2563eb;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        .forgot:hover {
+            text-decoration: underline;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: #2563eb;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .login-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .or {
+            text-align: center;
+            margin: 15px 0;
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .google-btn {
+            width: 100%;
+            padding: 10px;
+            background: #fff;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .google-btn:hover {
+            border-color: #2563eb;
+        }
+
+        .google-btn img {
+            width: 18px;
+        }
+
+        .register {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .register a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .register a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <a href="index.html" class="logo-link">
+                    <img class="Logo" src="../images/Logo/ProHand Logo.png" alt="ProHand Logo">
+                </a>
+            </div>
+
+            <div class="nav-links" id="main-nav-links">
+                <!-- Add nav links if needed -->
+            </div>
+
+            <div class="nav-actions">
+                <a href="index.html" class="btn">Home</a>
+            </div>
+        </nav>
+    </header>
+
+<div class="login-container">
+    <div class="card">
+        <h2>Login to your account</h2>
+        <hr>
+
+        <form>
+            <label>Email address</label>
+            <input type="email" placeholder="Enter your email address" required>
+
+            <label>Password</label>
+            <div class="password-box">
+                <input type="password" placeholder="Enter your password" required>
+                <span class="eye">👁</span>
+            </div>
+
+            <a href="#" class="forgot">Forgot password?</a>
+
+            <button type="submit" class="login-btn">Login</button>
+
+            <p class="or">or</p>
+
+            <button type="button" class="google-btn">
+                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+                Login with Google
+            </button>
+
+            <p class="register">
+                Don't have an account? <a href="/index/register.html">Register</a>
+            </p>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
