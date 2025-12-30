@@ -2,7 +2,7 @@
 $conn = mysqli_connect(
     "localhost",
     "root",
-    "",              // password EMPTY (set this in production)
+    "",             
     "prohand_db",
     4306
 );
