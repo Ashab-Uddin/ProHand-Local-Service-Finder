@@ -15,9 +15,6 @@
 
 </div>
 
----
-
-> ⚠️ **Note on the live link:** The badge above points to the GitHub Pages deployment already published from this repository (see the *Deployments* section in the repo sidebar). GitHub Pages only serves **static** files, so the front-end (HTML/CSS/JS) will load, but the **PHP + MySQL backend** (login, bookings, provider dashboard, etc.) requires a PHP-enabled host. For full functionality, deploy the `php/` and database files to a PHP/MySQL server (see [Deployment](#-deployment) below) and update the live link accordingly.
 
 ## 📖 About the Project
 
